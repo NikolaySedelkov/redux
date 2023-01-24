@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useDispatch, useSelector } from "react-redux";
+import { ProductList, FilterProductList } from "./components/ProductList.js";
+import ProductAdd from "./components/ProductAdd.js";
+import { changeFilter } from "./actions/filterFunction.js";
 
 function App() {
+  const filter  = useSelector(state => state.filterChange);
+  const items   = useSelector(state => state.productList);
+  console.log(filter);
+  const dispatch = useDispatch();
+  const hangeChange = evt => {
+    const {name, value} = evt.target;
+    dispatch(changeFilter(value));
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProductAdd/>
+      {filter!==""?<FilterProductList items={items} search={filter}/>:<ProductList items={items} />}
+      <hr/>
+      <label htmlFor="filter">Фильтр:</label><input value={filter} onChange={hangeChange} id="filter" type="text"/>
     </div>
   );
 }

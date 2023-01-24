@@ -1,0 +1,10 @@
+export const PRODUCT_CREATE         = 1;
+export const PRODUCT_READ           = 2;
+export const PRODUCT_UPDATE         = 3;
+export const PRODUCT_DELETE         = 4;
+export const PRODUCT_CHANGE         = 5;
+export const PRODUCT_UPDATE_FIELD   = 6;
+export const PRODUCT_EMPTY          = 7;
+export const FILTER_CHANGE          = 8;
+export const PRODUCT_SHOW           = 9;
+export const FILTER_FULL            = 10;
